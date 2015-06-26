@@ -46,7 +46,12 @@ def main(args):
 	toString = "----------\nEstimated length of filament for: \n"
 	for filename in args:
 		length = estimateFilament(filename)
-		toString = toString + filename +  " --> " + str(length) + " mm\n"
+		volume = 3.14*0.0875*0.0875*(length/10)
+		weight = volume * 1.3
+		cost = (3*weight)/100
+		cost = round(cost, 2)
+		print volume, weight, cost
+		toString = toString + filename +  " --> " + str(length) + " mm, cost: $" + str(cost) + "\n"
 	toString = toString + "----------"
 	return toString
 
